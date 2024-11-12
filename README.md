@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-- [Introduction)
-- [Problem Statement)
-- [Team Members)
-- [Dataset Overview)
-- [Data Preparation and Preprocessing)
-- [Exploratory Data Analysis (EDA))
-- [Modeling and Prediction)
-- [Evaluation Metrics)
-- [Key Findings)
-- [How to Reproduce the Project)
+- [Introduction](#introduction)
+- [Problem Statement](#problem-statement)
+- [Team Members](#TeamMembers)
+- [Dataset Overview](#dataset-overview)
+- [Data Preparation and Preprocessing](#data-preparation-and-preprocessing)
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Modeling and Prediction](#modeling-and-prediction)
+- [Evaluation Metrics](#evaluation-metrics)
+- [Key Findings](#key-findings)
+- [How to Reproduce the Project](#how-to-reproduce-the-project)
 
 
 ## Introduction
