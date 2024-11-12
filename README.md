@@ -1,4 +1,4 @@
-# Project Title: Market Sentiment & Index Movements - A Correlation Study​
+# Market Sentiment & Index Movements - A Correlation Study​
 
 ## Table of Contents
 
