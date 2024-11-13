@@ -1,17 +1,22 @@
 # Market Sentiment & Index Movements - A Correlation Study​
 
+## Team Members
+- Brijgopal Bharadwaj, DSBA
+- Chandan Rao, DSBA
+- Danish Akhlaq, DSBA
+
+
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Problem Statement](#problem-statement)
-- [Team Members](#TeamMembers)
+- [How to Reproduce the Project](#how-to-reproduce-the-project)
 - [Dataset Overview](#dataset-overview)
 - [Data Preparation and Preprocessing](#data-preparation-and-preprocessing)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 - [Modeling and Prediction](#modeling-and-prediction)
 - [Evaluation Metrics](#evaluation-metrics)
 - [Key Findings](#key-findings)
-- [How to Reproduce the Project](#how-to-reproduce-the-project)
 
 
 ## Introduction
@@ -31,69 +36,6 @@ While news media is a valuable source of information for investors, it can also 
 - Use the model to assign bias scores to news in real-time, and compute correlation scores with the index movements on the fly.
 - Use the insights gathered in various time-windows to forecast market trends in a limited capacity.
 
-## Team Members
-- Brijgopal Bharadwaj, DSBA
-- Chandan Rao, DSBA
-- Danish Akhlaq, DSBA
-
-
-## Dataset Overview
-
-The project utilizes a comprehensive dataset sourced from the app store, consisting of:
-
-- Total Records: 10,000 rows
-- Key Features:
-    - App Name: Name of the application.
-    - Category: App's category (e.g., Games, Productivity).
-    - Reviews: Number of user reviews.
-    - Average User Rating: Average rating from users.
-    - Size (MB): App size in megabytes.
-    - Price: App price (Free or Paid).
-
-## Initial Observations
-- The dataset had missing values and inconsistent formats that required standardization.
-- Non-numeric data types needed transformation for modeling.
-
-## Data Preparation and Preprocessing
-
-### Data Cleaning:
-- Handled missing values using imputation techniques.
-- Removed outliers based on Z-scores and IQR.
-- Converted categorical data into appropriate formats (e.g., one-hot encoding).
-
-### Feature Engineering:
-- Created new features such as Review Sentiment from text analysis.
-- Binned continuous variables like Size (MB) into categorical ranges for better interpretability.
-
-## Exploratory Data Analysis (EDA)
-
-Comprehensive EDA was performed to understand data distributions and relationships:
-
-- Distribution of News: Found that ratings were positively skewed, with most apps rated above 3.5.
-- Correlation Analysis: Discovered that Reviews and Category had strong correlations with Average User Rating.
-- Visualizations: Used histograms, scatter plots, and heatmaps to illustrate key insights.
-
-## Modeling and Prediction
-
-### Machine Learning Models Implemented:
-- Baseline Model: Linear Regression to establish initial performance.
-- Advanced Models:
-    - Random Forest Regressor
-    - Gradient Boosting Regressor
-### Hyperparameter Tuning:
-- Used GridSearchCV for fine-tuning the models and optimizing performance.
-
-## Evaluation Metrics
-
-- Primary Metrics:
-    - RMSE (Root Mean Squared Error) for prediction accuracy.
-    - R² (Coefficient of Determination) to measure model fit.
-- Best Model Performance:
-    - Random Forest Regressor: RMSE = 0.45, R² = 0.88
-
-## Key Findings
-
-
 
 ## How to Reproduce the Project
 
@@ -110,3 +52,58 @@ Comprehensive EDA was performed to understand data distributions and relationshi
 5. Open and run the Jupyter Notebook:
 ```jupyter notebook```
 6. Execute analysis.ipynb for complete steps.
+
+
+---
+
+## Dataset Overview
+
+The project utilizes a comprehensive dataset sourced from the app store, consisting of:
+
+- Total Records: 10,000 rows
+- Key Features:
+    - App Name: Name of the application.
+    - Category: App's category (e.g., Games, Productivity).
+    - Reviews: Number of user reviews.
+    - Average User Rating: Average rating from users.
+    - Size (MB): App size in megabytes.
+    - Price: App price (Free or Paid).
+
+
+## Data Preparation and Preprocessing
+
+### Data Cleaning:
+- Handled missing values using imputation techniques.
+- Removed outliers based on Z-scores and IQR.
+- Converted categorical data into appropriate formats (e.g., one-hot encoding).
+
+### Feature Engineering:
+- Created new features such as Review Sentiment from text analysis.
+- Binned continuous variables like Size (MB) into categorical ranges for better interpretability.
+
+
+## Exploratory Data Analysis (EDA)
+
+Comprehensive EDA was performed to understand data distributions and relationships:
+
+- Distribution of News: Found that ratings were positively skewed, with most apps rated above 3.5.
+- Correlation Analysis: Discovered that Reviews and Category had strong correlations with Average User Rating.
+- Visualizations: Used histograms, scatter plots, and heatmaps to illustrate key insights.
+
+
+## Modeling and Prediction
+
+### Machine Learning Models Implemented:
+> To be completed in near future
+### Hyperparameter Tuning:
+> To be completed in near future
+
+
+## Evaluation Metrics
+
+> To be completed in near future
+
+
+## Key Findings
+
+> To be completed in near future
