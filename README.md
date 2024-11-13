@@ -40,55 +40,58 @@ While news media is a valuable source of information for investors, it can also 
 ## How to Reproduce the Project
 
 1. Clone the repository:
-```git clone https://github.com/BrijAtIISc/DSP_project.git```
+    ```git clone https://github.com/BrijAtIISc/DSP_project.git```
 2. Navigate to the project folder:
-```cd mrkt-sent-indx-move```
+    ```cd DSP_project```
 3. Install dependencies:
-```pip install -r requirements.txt```
-4. Run the data generation script
-```python data_generation.py```
-5. Run the data preprocessing script:
-```python data_preprocessing.py```
-5. Open and run the Jupyter Notebook:
-```jupyter notebook```
-6. Execute analysis.ipynb for complete steps.
+    ```pip install -r requirements.txt```
+4. In case fresh data is required:
+    * Set the following environment variables:
+        ```
+            export GCSJ_API_KEY=<YOUR_GOOGLE_CUSTOM_SEARCH_API_KEY>
+            export GCSJ_ENGINE_ID=<YOUR_GOOGLE_SEARCH_ENGINE_ID>
+        ```
+    * Run the data collection playbooks:
+        - `Code/01-data-collection-news-companies.ipynb`
+        - `Code/02-data-collection-news-market.ipynb`
+5. Run the data preprocessing playbooks:
+    * `Code/03-data-preprocessing-news-companies.ipynb`
+    * `Code/04-data-preprocessing-news-market.ipynb`
+5. To perform EDA, use the following playbooks:
+    * `Code/05-EDA-news-companies.ipynb`
+    * `Code/06-EDA-news-market.ipynb`
 
 
 ---
 
 ## Dataset Overview
 
-The project utilizes a comprehensive dataset sourced from the app store, consisting of:
-
-- Total Records: 10,000 rows
-- Key Features:
-    - App Name: Name of the application.
-    - Category: App's category (e.g., Games, Productivity).
-    - Reviews: Number of user reviews.
-    - Average User Rating: Average rating from users.
-    - Size (MB): App size in megabytes.
-    - Price: App price (Free or Paid).
-
+The dataset consists of two main components:
+1. **News Articles Dataset:**
+    - Contains news articles from various sources related to companies and the stock market.
+    - Features include Title, Description, URL, Source, and Date.
+    - The dataset is collected using the Google Custom Search API.
+2. **Market Data Dataset:**
+    - Contains historical stock market data, including Open, High, Low, Close, Volume, and Adjusted Close prices.
+    - Features include Date, Ticker, and Company Name.
 
 ## Data Preparation and Preprocessing
 
-### Data Cleaning:
 - Handled missing values using imputation techniques.
-- Removed outliers based on Z-scores and IQR.
-- Converted categorical data into appropriate formats (e.g., one-hot encoding).
-
-### Feature Engineering:
-- Created new features such as Review Sentiment from text analysis.
-- Binned continuous variables like Size (MB) into categorical ranges for better interpretability.
+- Removed outliers.
+- Converted categorical data into appropriate formats using one-hot encoding.
+- Created new features for VADER Sentiment Scores using NLP pipelines from `nltk`.
+- Created news article summaries using `pipeline` from `transformers` library (by HuggingFace).
 
 
 ## Exploratory Data Analysis (EDA)
 
 Comprehensive EDA was performed to understand data distributions and relationships:
 
-- Distribution of News: Found that ratings were positively skewed, with most apps rated above 3.5.
-- Correlation Analysis: Discovered that Reviews and Category had strong correlations with Average User Rating.
-- Visualizations: Used histograms, scatter plots, and heatmaps to illustrate key insights.
+- Distribution of News across dates: Found that ratings were positively skewed, with most apps rated above 3.5.
+- Distribution of News-article summary lengths: Found that most summaries were between 100-200 words.
+- Distribution of Sentiment Scores: Found that most articles had a neutral sentiment.
+- Distribution of Market Data across time
 
 
 ## Modeling and Prediction
