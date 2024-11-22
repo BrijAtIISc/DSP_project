@@ -5,14 +5,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Function to split files
 split_files() {
-  find "$SCRIPT_DIR" -type f \( -name "*.tar.gz" -o -name "*.pth" \) -size +100M | while read -r file;
-  do
-    echo "Splitting: $file"
-    split -b 100M "$file" "${file}_chunk_"
-    if [ $? -eq 0 ]; then
-      echo "Deleting: $file"
-      rm "$file"
-    fi
+  for ext in "*.tar.gz" "*.pth"; do
+    find "$SCRIPT_DIR" -type f -name "$ext" -size +100M | while read -r file;
+    do
+      echo "Splitting: $file"
+      split -b 100M "$file" "${file}_chunk_"
+      if [ $? -eq 0 ]; then
+        echo "Deleting: $file"
+        rm "$file"
+      fi
+    done
   done
 }
 
