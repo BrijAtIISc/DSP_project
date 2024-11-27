@@ -3,16 +3,22 @@
 # Get the directory of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Define the extensions to chunk-down
+EXTENSIONS=("*.tar.gz" "*.model")
+
 # Function to split files
 split_files() {
-  for ext in "*.tar.gz" "*.model"; do
+  for ext in "${EXTENSIONS[@]}"; do
     find "$SCRIPT_DIR" -type f -name "$ext" -size +100M | while read -r file;
     do
       echo "Splitting: $file"
       split -b 100M "$file" "${file}_chunk_"
       if [ $? -eq 0 ]; then
-        echo "Deleting: $file"
-        rm "$file"
+        relative_path=$(echo "$file" | sed "s|^$SCRIPT_DIR/||")
+        if ! grep -q "$relative_path" "$SCRIPT_DIR/.gitignore"; then
+          echo "Git-Ignoring: $relative_path"
+          echo "$relative_path" >> "$SCRIPT_DIR/.gitignore"
+        fi
       fi
     done
   done
@@ -22,25 +28,10 @@ split_files() {
 recombine_files() {
   find "$SCRIPT_DIR" -type f -name "*_chunk_*" | sed 's/_chunk_.*//' | sort -u | while read -r prefix; 
   do
-    echo "Recombining Chunks: $prefix"
+    echo "Recombining: $prefix"
     cat "${prefix}_chunk_"* > "$prefix"
-    if [ $? -eq 0 ]; then
-      echo "Deleting Chunks: $prefix"
-      rm "${prefix}_chunk_"*
-    fi
   done
 }
 
-# Main script execution
-case "$1" in
-  split)
-    split_files
-    ;;
-  recombine)
-    recombine_files
-    ;;
-  *)
-    echo "Usage: $0 {split|recombine}"
-    exit 1
-    ;;
-esac
+split_files
+recombine_files
