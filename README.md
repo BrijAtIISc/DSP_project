@@ -97,7 +97,12 @@ Comprehensive EDA was performed to understand data distributions and relationshi
 ## Modeling and Prediction
 
 ### Machine Learning Models Implemented:
-> To be completed in near future
+- **Market Sentiment Classification:** 
+    - Used BERT embeddings and DNN classifier to assign `bearish` / `neutral` / `bullish` labels to news articles.
+    - Achieved an accuracy of 90% on the test set.
+- **Market Price Forecasting (Regression):**
+    - Used xgboost to predict the next-day market movement based on news sentiment scores and technical parameters of previous days.
+    - Achieved an RMSE score of 149.13 on the test set.
 ### Hyperparameter Tuning:
 > To be completed in near future
 
