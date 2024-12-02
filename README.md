@@ -54,12 +54,15 @@ While news media is a valuable source of information for investors, it can also 
     * Run the data collection playbooks:
         - `Code/01-data-collection-news-companies.ipynb`
         - `Code/02-data-collection-news-market.ipynb`
+        - `Code/03-data-collection-stocks.ipynb`
 5. Run the data preprocessing playbooks:
     * `Code/03-data-preprocessing-news-companies.ipynb`
     * `Code/04-data-preprocessing-news-market.ipynb`
+    * `Code/06-data-preprocessing-stocks.ipynb`
 5. To perform EDA, use the following playbooks:
     * `Code/05-EDA-news-companies.ipynb`
     * `Code/06-EDA-news-market.ipynb`
+    * `Code/09-EDA-stoks.ipynb`
 
 
 ---
