@@ -16,7 +16,7 @@
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 - [Modeling and Prediction](#modeling-and-prediction)
 - [Evaluation Metrics](#evaluation-metrics)
-- [Key Findings](#key-findings)
+- [Future Work](#Future-Work)
 
 
 ## Introduction
@@ -30,11 +30,13 @@ While news media is a valuable source of information for investors, it can also 
 - Knowledge about these influences might help the common investor be more perceptive to the way these influences can creep into their investment patterns.
 - An extremely biased media-source might be a candidate for further investigation by the regulatory authorities like SEBI to uncover undue practices/agendas.
 #### Objectives of the project
-- We want to develop a machine-learning pipeline that enables real-time sentiment analysis of incoming news articles, and computation of correlation scores that feed into a forecasting model for near-term market movement prediction.
+- Develop a real-time pipeline that analyzes news articles and assigns bias scores using machine learning.
+- Calculate correlation between news bias and market movements.
+- Leverage the insights to forecast short-term market trends.
 #### How can Data Science solve the problem?
-- Build a market-news bias-score assigning model, using BERT embeddings and DNN regressor.
-- Use the model to assign bias scores to news in real-time, and compute correlation scores with the index movements on the fly.
-- Use the insights gathered in various time-windows to forecast market trends in a limited capacity.
+- Build a model using BERT embeddings and a XGBoost regressor to assign bias scores.
+- Apply the model to analyze news in real-time and calculate correlation scores.
+- Utilize these insights for forecasting market trends.
 
 
 ## How to Reproduce the Project
@@ -109,14 +111,34 @@ Comprehensive EDA was performed to understand data distributions and relationshi
     - Used xgboost to predict the next-day market movement based on news sentiment scores and technical parameters of previous days.
     - Achieved an RMSE score of 149.13 on the test set.
 ### Hyperparameter Tuning:
-> To be completed in near future
+> Using hyperparameter tuning to optimize the performance of an XGBoost regression model for predicting stock prices, specifically the "Close" price.
+- Hyperparameter Tuning with Bayesian Optimization
+    - A base XGBRegressor model is initialized.
+    - A parameter grid is defined for tuning key hyperparameters like:
+        - n_estimators: Number of trees.
+        - learning_rate: Learning rate for gradient descent.
+        - max_depth: Maximum depth of trees.
+        - subsample: Fraction of samples used for training each tree.
+        - colsample_bytree: Fraction of features considered at each split.
+    - BayesSearchCV is used for tuning the hyperparameters, optimizing for negative mean squared error (neg_mean_squared_error) using 15-fold cross-validation.
+    - The best hyperparameters are identified as below.
+`````
+OrderedDict({'colsample_bytree': 0.8, 'learning_rate': 0.05479350229402818, 'max_depth': 3, 'n_estimators': 300, 'subsample': 0.8})
+`````
 
 
 ## Evaluation Metrics
 
-> To be completed in near future
+| Performance Metrics      | Values |
+| -------------     | ------------- |
+| Accuracy      | 96.91%  |
+| Precision     | 96.94%  |
+| Recall        | 96.91%  |
+| F1 Score      | 96.91%  |
+| R2 score      | 138.79  |
 
 
-## Key Findings
+## Future Work
 
-> To be completed in near future
+- Compare BERT performance with other text-embedding models like Word2Vec, etc.
+- Assimilate dataset for a longer time-window to obtain higher performance.
