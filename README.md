@@ -135,7 +135,8 @@ OrderedDict({'colsample_bytree': 0.8, 'learning_rate': 0.05479350229402818, 'max
 | Precision     | 96.94%  |
 | Recall        | 96.91%  |
 | F1 Score      | 96.91%  |
-| R2 score      | 138.79  |
+| R2 score      | 0.7835  |
+| RMSE Value      | 138.79  |
 
 
 ## Future Work
